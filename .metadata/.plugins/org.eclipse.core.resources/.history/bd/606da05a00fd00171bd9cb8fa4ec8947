@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="restInPeace" nsURI="http://www.example.org/restInPeace" nsPrefix="restInPeace">
+  <eClassifiers xsi:type="ecore:EClass" name="CommandRest">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verb" lowerBound="1" eType="#//Verb"
+        defaultValueLiteral="GET"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="APIRest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="commands" upperBound="-1"
+        eType="#//CommandRest" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="Verb">
+    <eLiterals name="PUT"/>
+    <eLiterals name="POST" value="1"/>
+    <eLiterals name="DELETE" value="2"/>
+    <eLiterals name="GET" value="3"/>
+  </eClassifiers>
+</ecore:EPackage>
