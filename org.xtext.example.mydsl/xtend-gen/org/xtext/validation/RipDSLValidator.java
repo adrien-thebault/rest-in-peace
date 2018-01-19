@@ -3,7 +3,13 @@
  */
 package org.xtext.validation;
 
+import java.util.HashSet;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.xtext.validation.Check;
 import org.xtext.validation.AbstractRipDSLValidator;
+import restInPeace.APIRest;
+import restInPeace.CommandRest;
+import restInPeace.Method;
 
 /**
  * This class contains custom validation rules.
@@ -12,4 +18,28 @@ import org.xtext.validation.AbstractRipDSLValidator;
  */
 @SuppressWarnings("all")
 public class RipDSLValidator extends AbstractRipDSLValidator {
+  @Check
+  public void checkGreetingStartsWithCapital(final APIRest api) {
+    final EList<CommandRest> commands = api.getCommands();
+    final HashSet<String> commandList = new HashSet<String>();
+    for (final CommandRest c : commands) {
+      {
+        String _path = c.getPath();
+        Method _method = c.getMethod();
+        final String string = (_path + _method);
+        boolean _contains = commandList.contains(string);
+        if (_contains) {
+          String _path_1 = c.getPath();
+          String _plus = ("Command with path " + _path_1);
+          String _plus_1 = (_plus + " and method ");
+          Method _method_1 = c.getMethod();
+          String _plus_2 = (_plus_1 + _method_1);
+          String _plus_3 = (_plus_2 + " is already defined ಠ_ಠ.");
+          this.error(_plus_3, c, null, (-1));
+        } else {
+          commandList.add(string);
+        }
+      }
+    }
+  }
 }
