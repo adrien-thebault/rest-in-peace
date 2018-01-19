@@ -22,7 +22,6 @@ import restInPeace.RestInPeacePackage;
  * <ul>
  *   <li>{@link restInPeace.impl.ResponseImpl#getCode <em>Code</em>}</li>
  *   <li>{@link restInPeace.impl.ResponseImpl#getDescription <em>Description</em>}</li>
- *   <li>{@link restInPeace.impl.ResponseImpl#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,26 +66,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 	 * @ordered
 	 */
 	protected String description = DESCRIPTION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String BODY_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getBody()
-	 * @generated
-	 * @ordered
-	 */
-	protected String body = BODY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -155,27 +134,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getBody() {
-		return body;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setBody(String newBody) {
-		String oldBody = body;
-		body = newBody;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RestInPeacePackage.RESPONSE__BODY, oldBody, body));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -183,8 +141,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 			return getCode();
 		case RestInPeacePackage.RESPONSE__DESCRIPTION:
 			return getDescription();
-		case RestInPeacePackage.RESPONSE__BODY:
-			return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -202,9 +158,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 			return;
 		case RestInPeacePackage.RESPONSE__DESCRIPTION:
 			setDescription((String) newValue);
-			return;
-		case RestInPeacePackage.RESPONSE__BODY:
-			setBody((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -224,9 +177,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 		case RestInPeacePackage.RESPONSE__DESCRIPTION:
 			setDescription(DESCRIPTION_EDEFAULT);
 			return;
-		case RestInPeacePackage.RESPONSE__BODY:
-			setBody(BODY_EDEFAULT);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -243,8 +193,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 			return code != CODE_EDEFAULT;
 		case RestInPeacePackage.RESPONSE__DESCRIPTION:
 			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
-		case RestInPeacePackage.RESPONSE__BODY:
-			return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -264,8 +212,6 @@ public class ResponseImpl extends MinimalEObjectImpl.Container implements Respon
 		result.append(code);
 		result.append(", description: ");
 		result.append(description);
-		result.append(", body: ");
-		result.append(body);
 		result.append(')');
 		return result.toString();
 	}

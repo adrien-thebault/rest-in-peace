@@ -34,7 +34,7 @@ public interface Parameter extends EObject {
 	 * @return the value of the '<em>Type</em>' attribute.
 	 * @see #setType(String)
 	 * @see restInPeace.RestInPeacePackage#getParameter_Type()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getType();
@@ -86,7 +86,7 @@ public interface Parameter extends EObject {
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see restInPeace.RestInPeacePackage#getParameter_Name()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getName();

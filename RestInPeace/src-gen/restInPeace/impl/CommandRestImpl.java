@@ -39,6 +39,8 @@ import restInPeace.RestInPeacePackage;
  *   <li>{@link restInPeace.impl.CommandRestImpl#getEntryFormats <em>Entry Formats</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getOutputFormats <em>Output Formats</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getResponse <em>Response</em>}</li>
+ *   <li>{@link restInPeace.impl.CommandRestImpl#getDescription <em>Description</em>}</li>
+ *   <li>{@link restInPeace.impl.CommandRestImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
@@ -123,6 +125,46 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	 * @ordered
 	 */
 	protected EList<Response> response;
+
+	/**
+	 * The default value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String DESCRIPTION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getDescription() <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getDescription()
+	 * @generated
+	 * @ordered
+	 */
+	protected String description = DESCRIPTION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -244,6 +286,50 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getDescription() {
+		return description;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setDescription(String newDescription) {
+		String oldDescription = description;
+		description = newDescription;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RestInPeacePackage.COMMAND_REST__DESCRIPTION,
+					oldDescription, description));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RestInPeacePackage.COMMAND_REST__NAME, oldName,
+					name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -275,6 +361,10 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			return getOutputFormats();
 		case RestInPeacePackage.COMMAND_REST__RESPONSE:
 			return getResponse();
+		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
+			return getDescription();
+		case RestInPeacePackage.COMMAND_REST__NAME:
+			return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -310,6 +400,12 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			getResponse().clear();
 			getResponse().addAll((Collection<? extends Response>) newValue);
 			return;
+		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
+			setDescription((String) newValue);
+			return;
+		case RestInPeacePackage.COMMAND_REST__NAME:
+			setName((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -340,6 +436,12 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		case RestInPeacePackage.COMMAND_REST__RESPONSE:
 			getResponse().clear();
 			return;
+		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
+			setDescription(DESCRIPTION_EDEFAULT);
+			return;
+		case RestInPeacePackage.COMMAND_REST__NAME:
+			setName(NAME_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -364,6 +466,10 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			return outputFormats != null && !outputFormats.isEmpty();
 		case RestInPeacePackage.COMMAND_REST__RESPONSE:
 			return response != null && !response.isEmpty();
+		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
+			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
+		case RestInPeacePackage.COMMAND_REST__NAME:
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -387,6 +493,10 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		result.append(entryFormats);
 		result.append(", outputFormats: ");
 		result.append(outputFormats);
+		result.append(", description: ");
+		result.append(description);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}

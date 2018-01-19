@@ -15,7 +15,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link restInPeace.Response#getCode <em>Code</em>}</li>
  *   <li>{@link restInPeace.Response#getDescription <em>Description</em>}</li>
- *   <li>{@link restInPeace.Response#getBody <em>Body</em>}</li>
  * </ul>
  *
  * @see restInPeace.RestInPeacePackage#getResponse()
@@ -74,31 +73,5 @@ public interface Response extends EObject {
 	 * @generated
 	 */
 	void setDescription(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Body</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Body</em>' attribute.
-	 * @see #setBody(String)
-	 * @see restInPeace.RestInPeacePackage#getResponse_Body()
-	 * @model
-	 * @generated
-	 */
-	String getBody();
-
-	/**
-	 * Sets the value of the '{@link restInPeace.Response#getBody <em>Body</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Body</em>' attribute.
-	 * @see #getBody()
-	 * @generated
-	 */
-	void setBody(String value);
 
 } // Response

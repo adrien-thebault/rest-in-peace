@@ -1,0 +1,43 @@
+#
+
+pluginName = RestInPeace Edit Support
+providerName = www.example.org
+
+_UI_CreateChild_text = {0}
+_UI_CreateChild_text2 = {1} {0}
+_UI_CreateChild_text3 = {1}
+_UI_CreateChild_tooltip = Create New {0} Under {1} Feature
+_UI_CreateChild_description = Create a new child of type {0} for the {1} feature of the selected {2}.
+_UI_CreateSibling_description = Create a new sibling of type {0} for the selected {2}, under the {1} feature of their parent.
+
+_UI_PropertyDescriptor_description = The {0} of the {1}
+
+_UI_CommandRest_type = Command Rest
+_UI_APIRest_type = API Rest
+_UI_Parameter_type = Parameter
+_UI_Response_type = Response
+_UI_Unknown_type = Object
+
+_UI_Unknown_datatype= Value
+
+_UI_CommandRest_method_feature = Method
+_UI_CommandRest_path_feature = Path
+_UI_CommandRest_parameters_feature = Parameters
+_UI_CommandRest_entryFormats_feature = Entry Formats
+_UI_CommandRest_outputFormats_feature = Output Formats
+_UI_CommandRest_body_feature = Body
+_UI_CommandRest_response_feature = Response
+_UI_APIRest_commands_feature = Commands
+_UI_Parameter_type_feature = Type
+_UI_Parameter_comment_feature = Comment
+_UI_Parameter_name_feature = Name
+_UI_Response_code_feature = Code
+_UI_Response_description_feature = Description
+_UI_Response_body_feature = Body
+_UI_Unknown_feature = Unspecified
+
+_UI_Method_PUT_literal = PUT
+_UI_Method_POST_literal = POST
+_UI_Method_DELETE_literal = DELETE
+_UI_Method_GET_literal = GET
+_UI_Method_PATCH_literal = PATCH

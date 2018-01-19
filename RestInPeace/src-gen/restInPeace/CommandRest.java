@@ -21,6 +21,8 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link restInPeace.CommandRest#getEntryFormats <em>Entry Formats</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getOutputFormats <em>Output Formats</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getResponse <em>Response</em>}</li>
+ *   <li>{@link restInPeace.CommandRest#getDescription <em>Description</em>}</li>
+ *   <li>{@link restInPeace.CommandRest#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see restInPeace.RestInPeacePackage#getCommandRest()
@@ -69,7 +71,7 @@ public interface CommandRest extends EObject {
 	 * @return the value of the '<em>Path</em>' attribute.
 	 * @see #setPath(String)
 	 * @see restInPeace.RestInPeacePackage#getCommandRest_Path()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	String getPath();
@@ -147,5 +149,57 @@ public interface CommandRest extends EObject {
 	 * @generated
 	 */
 	EList<Response> getResponse();
+
+	/**
+	 * Returns the value of the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Description</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Description</em>' attribute.
+	 * @see #setDescription(String)
+	 * @see restInPeace.RestInPeacePackage#getCommandRest_Description()
+	 * @model
+	 * @generated
+	 */
+	String getDescription();
+
+	/**
+	 * Sets the value of the '{@link restInPeace.CommandRest#getDescription <em>Description</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Description</em>' attribute.
+	 * @see #getDescription()
+	 * @generated
+	 */
+	void setDescription(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see restInPeace.RestInPeacePackage#getCommandRest_Name()
+	 * @model required="true"
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link restInPeace.CommandRest#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // CommandRest

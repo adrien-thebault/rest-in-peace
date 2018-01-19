@@ -24,7 +24,6 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 import restInPeace.CommandRest;
-import restInPeace.Method;
 import restInPeace.RestInPeaceFactory;
 import restInPeace.RestInPeacePackage;
 
@@ -61,6 +60,8 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 			addPathPropertyDescriptor(object);
 			addEntryFormatsPropertyDescriptor(object);
 			addOutputFormatsPropertyDescriptor(object);
+			addDescriptionPropertyDescriptor(object);
+			addNamePropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -130,6 +131,38 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 	}
 
 	/**
+	 * This adds a property descriptor for the Description feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addDescriptionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_CommandRest_description_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_CommandRest_description_feature",
+								"_UI_CommandRest_type"),
+						RestInPeacePackage.Literals.COMMAND_REST__DESCRIPTION, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Name feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addNamePropertyDescriptor(Object object) {
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_CommandRest_name_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_CommandRest_name_feature",
+								"_UI_CommandRest_type"),
+						RestInPeacePackage.Literals.COMMAND_REST__NAME, true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
@@ -189,8 +222,7 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 	 */
 	@Override
 	public String getText(Object object) {
-		Method labelValue = ((CommandRest) object).getMethod();
-		String label = labelValue == null ? null : labelValue.toString();
+		String label = ((CommandRest) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_CommandRest_type")
 				: getString("_UI_CommandRest_type") + " " + label;
 	}
@@ -211,6 +243,8 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 		case RestInPeacePackage.COMMAND_REST__PATH:
 		case RestInPeacePackage.COMMAND_REST__ENTRY_FORMATS:
 		case RestInPeacePackage.COMMAND_REST__OUTPUT_FORMATS:
+		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
+		case RestInPeacePackage.COMMAND_REST__NAME:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:

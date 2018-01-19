@@ -122,13 +122,31 @@ public interface RestInPeacePackage extends EPackage {
 	int COMMAND_REST__RESPONSE = 5;
 
 	/**
+	 * The feature id for the '<em><b>Description</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REST__DESCRIPTION = 6;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REST__NAME = 7;
+
+	/**
 	 * The number of structural features of the '<em>Command Rest</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST_FEATURE_COUNT = 6;
+	int COMMAND_REST_FEATURE_COUNT = 8;
 
 	/**
 	 * The number of operations of the '<em>Command Rest</em>' class.
@@ -159,13 +177,31 @@ public interface RestInPeacePackage extends EPackage {
 	int API_REST__COMMANDS = 0;
 
 	/**
+	 * The feature id for the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_REST__HOST = 1;
+
+	/**
+	 * The feature id for the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int API_REST__PORT = 2;
+
+	/**
 	 * The number of structural features of the '<em>API Rest</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int API_REST_FEATURE_COUNT = 1;
+	int API_REST_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>API Rest</em>' class.
@@ -260,22 +296,13 @@ public interface RestInPeacePackage extends EPackage {
 	int RESPONSE__DESCRIPTION = 1;
 
 	/**
-	 * The feature id for the '<em><b>Body</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESPONSE__BODY = 2;
-
-	/**
 	 * The number of structural features of the '<em>Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE_FEATURE_COUNT = 3;
+	int RESPONSE_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Response</em>' class.
@@ -373,6 +400,28 @@ public interface RestInPeacePackage extends EPackage {
 	EReference getCommandRest_Response();
 
 	/**
+	 * Returns the meta object for the attribute '{@link restInPeace.CommandRest#getDescription <em>Description</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Description</em>'.
+	 * @see restInPeace.CommandRest#getDescription()
+	 * @see #getCommandRest()
+	 * @generated
+	 */
+	EAttribute getCommandRest_Description();
+
+	/**
+	 * Returns the meta object for the attribute '{@link restInPeace.CommandRest#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see restInPeace.CommandRest#getName()
+	 * @see #getCommandRest()
+	 * @generated
+	 */
+	EAttribute getCommandRest_Name();
+
+	/**
 	 * Returns the meta object for class '{@link restInPeace.APIRest <em>API Rest</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -392,6 +441,28 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getAPIRest_Commands();
+
+	/**
+	 * Returns the meta object for the attribute '{@link restInPeace.APIRest#getHost <em>Host</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Host</em>'.
+	 * @see restInPeace.APIRest#getHost()
+	 * @see #getAPIRest()
+	 * @generated
+	 */
+	EAttribute getAPIRest_Host();
+
+	/**
+	 * Returns the meta object for the attribute '{@link restInPeace.APIRest#getPort <em>Port</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Port</em>'.
+	 * @see restInPeace.APIRest#getPort()
+	 * @see #getAPIRest()
+	 * @generated
+	 */
+	EAttribute getAPIRest_Port();
 
 	/**
 	 * Returns the meta object for class '{@link restInPeace.Parameter <em>Parameter</em>}'.
@@ -467,17 +538,6 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getResponse_Description();
-
-	/**
-	 * Returns the meta object for the attribute '{@link restInPeace.Response#getBody <em>Body</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Body</em>'.
-	 * @see restInPeace.Response#getBody()
-	 * @see #getResponse()
-	 * @generated
-	 */
-	EAttribute getResponse_Body();
 
 	/**
 	 * Returns the meta object for enum '{@link restInPeace.Method <em>Method</em>}'.
@@ -571,6 +631,22 @@ public interface RestInPeacePackage extends EPackage {
 		EReference COMMAND_REST__RESPONSE = eINSTANCE.getCommandRest_Response();
 
 		/**
+		 * The meta object literal for the '<em><b>Description</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMAND_REST__DESCRIPTION = eINSTANCE.getCommandRest_Description();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute COMMAND_REST__NAME = eINSTANCE.getCommandRest_Name();
+
+		/**
 		 * The meta object literal for the '{@link restInPeace.impl.APIRestImpl <em>API Rest</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -587,6 +663,22 @@ public interface RestInPeacePackage extends EPackage {
 		 * @generated
 		 */
 		EReference API_REST__COMMANDS = eINSTANCE.getAPIRest_Commands();
+
+		/**
+		 * The meta object literal for the '<em><b>Host</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute API_REST__HOST = eINSTANCE.getAPIRest_Host();
+
+		/**
+		 * The meta object literal for the '<em><b>Port</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute API_REST__PORT = eINSTANCE.getAPIRest_Port();
 
 		/**
 		 * The meta object literal for the '{@link restInPeace.impl.ParameterImpl <em>Parameter</em>}' class.
@@ -647,14 +739,6 @@ public interface RestInPeacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESPONSE__DESCRIPTION = eINSTANCE.getResponse_Description();
-
-		/**
-		 * The meta object literal for the '<em><b>Body</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESPONSE__BODY = eINSTANCE.getResponse_Body();
 
 		/**
 		 * The meta object literal for the '{@link restInPeace.Method <em>Method</em>}' enum.

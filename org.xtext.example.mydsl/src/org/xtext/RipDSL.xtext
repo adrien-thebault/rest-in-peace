@@ -43,16 +43,10 @@ enum Method returns Method:
 				PUT = 'PUT' | POST = 'POST' | DELETE = 'DELETE' | GET = 'GET' | PATCH = 'PATCH';
 
 Parameter returns Parameter:
-	'Parameter'
-	name=EString
-	'{'
-		'type' type=EString
-		('comment' comment=EString)?
-	'}';
+	'name' ':' name=EString
+	'type' ':' type=EString
+	('description' ':' comment=EString)?;
 
 Response returns Response:
-	'Response'
-	'{'
-		'code' code=EInt
-		('description' description=EString)?
-	'}';
+	code=EInt ':'
+		('description' ':' description=EString)?;

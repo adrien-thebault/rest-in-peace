@@ -16,6 +16,8 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link restInPeace.APIRest#getCommands <em>Commands</em>}</li>
+ *   <li>{@link restInPeace.APIRest#getHost <em>Host</em>}</li>
+ *   <li>{@link restInPeace.APIRest#getPort <em>Port</em>}</li>
  * </ul>
  *
  * @see restInPeace.RestInPeacePackage#getAPIRest()
@@ -38,5 +40,57 @@ public interface APIRest extends EObject {
 	 * @generated
 	 */
 	EList<CommandRest> getCommands();
+
+	/**
+	 * Returns the value of the '<em><b>Host</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Host</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Host</em>' attribute.
+	 * @see #setHost(String)
+	 * @see restInPeace.RestInPeacePackage#getAPIRest_Host()
+	 * @model
+	 * @generated
+	 */
+	String getHost();
+
+	/**
+	 * Sets the value of the '{@link restInPeace.APIRest#getHost <em>Host</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Host</em>' attribute.
+	 * @see #getHost()
+	 * @generated
+	 */
+	void setHost(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Port</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Port</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Port</em>' attribute.
+	 * @see #setPort(int)
+	 * @see restInPeace.RestInPeacePackage#getAPIRest_Port()
+	 * @model
+	 * @generated
+	 */
+	int getPort();
+
+	/**
+	 * Sets the value of the '{@link restInPeace.APIRest#getPort <em>Port</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Port</em>' attribute.
+	 * @see #getPort()
+	 * @generated
+	 */
+	void setPort(int value);
 
 } // APIRest

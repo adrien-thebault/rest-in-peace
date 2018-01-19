@@ -55,7 +55,6 @@ public class ResponseItemProvider extends ItemProviderAdapter implements IEditin
 
 			addCodePropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
-			addBodyPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -89,22 +88,6 @@ public class ResponseItemProvider extends ItemProviderAdapter implements IEditin
 						getString("_UI_PropertyDescriptor_description", "_UI_Response_description_feature",
 								"_UI_Response_type"),
 						RestInPeacePackage.Literals.RESPONSE__DESCRIPTION, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Body feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addBodyPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_Response_body_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_Response_body_feature",
-								"_UI_Response_type"),
-						RestInPeacePackage.Literals.RESPONSE__BODY, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -155,7 +138,6 @@ public class ResponseItemProvider extends ItemProviderAdapter implements IEditin
 		switch (notification.getFeatureID(Response.class)) {
 		case RestInPeacePackage.RESPONSE__CODE:
 		case RestInPeacePackage.RESPONSE__DESCRIPTION:
-		case RestInPeacePackage.RESPONSE__BODY:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
