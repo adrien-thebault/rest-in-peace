@@ -1,1 +1,11 @@
 .metadata
+org.xtext.example.mydsl/src-gen/
+org.xtext.example.mydsl/xtend-gen/
+org.xtext.example.mydsl.ide/src-gen/
+org.xtext.example.mydsl.ide/xtend-gen/
+org.xtext.example.mydsl.ui/src-gen/
+org.xtext.example.mydsl.ui/xtend-gen/
+org.xtext.example.mydsl.tests/src-gen/
+org.xtext.example.mydsl.tests/xtend-gen/
+org.xtext.example.mydsl.ui.tests/src-gen/
+org.xtext.example.mydsl.ui.tests/xtend-gen/
