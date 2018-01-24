@@ -3,6 +3,12 @@
  */
 package org.xtext.validation
 
+import restInPeace.*;
+import org.eclipse.xtext.validation.Check
+import org.eclipse.emf.common.util.EList
+import java.util.HashSet
+import org.xtext.parser.antlr.RipDSLParser
+import java.util.regex.Pattern
 
 /**
  * This class contains custom validation rules. 
@@ -21,5 +27,35 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+	@Check
+	def checkPathAndMethodsUnique(APIRest api) {
+		val commands = api.commands;
+		val commandList = new HashSet<String>();
+		for(CommandRest c : commands){
+			val string = c.path + c.method;
+			if(commandList.contains(string)){
+				error("Command with path "+c.path+" and method "+c.method+" is already defined ಠ_ಠ.", c, null, -1);
+			} else {
+				commandList.add(string);
+			}
+		}
+	}
 	
+	@Check
+	def checkPathParameter(CommandRest command) {
+		var path = command.path;
+		val matcher = Pattern.compile("/\\{(\\w+)\\}/?").matcher(path);
+		while(matcher.find()){
+			val parName = matcher.group(1);
+			val set = new HashSet<String>();
+			for(Parameter p : command.parameters){
+				set.add(p.name);
+			}
+			
+			if(!set.contains(parName)){
+				error("Command with path "+command.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .", command, null, -1);
+			}
+		}
+	}
 }
