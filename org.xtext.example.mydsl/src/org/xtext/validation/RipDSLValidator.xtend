@@ -16,15 +16,18 @@ import restInPeace.Parameter
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 class RipDSLValidator extends AbstractRipDSLValidator {
+	public static final String METHOD_PATH_ALREADY_DEFINED = "method-path-already-defined";
+	public static final String PARAMETER_NOT_DEFINED = "parameter-not-defined";
+	
 
 	@Check
 	def checkPathAndMethodsUnique(APIRest api) {
 		val commands = api.commands;
 		val commandList = new HashSet<String>();
 		for(CommandRest c : commands){
-			val string = c.path + c.method;
+			val string = c.path.path + c.method;
 			if(commandList.contains(string)){
-				error("Command with path "+c.path+" and method "+c.method+" is already defined ಠ_ಠ.", c, null, -1);
+				error("Command with path "+c.path.path+" and method "+c.method+" is already defined ಠ_ಠ.", c, null, -1, METHOD_PATH_ALREADY_DEFINED);
 			} else {
 				commandList.add(string);
 			}
@@ -33,7 +36,7 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 	
 	@Check
 	def checkPathParameter(CommandRest command) {
-		var path = command.path;
+		var path = command.path.path;
 		val matcher = Pattern.compile("/\\{(\\w+)\\}/?").matcher(path);
 		while(matcher.find()){
 			val parName = matcher.group(1);
@@ -43,7 +46,8 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 			}
 			
 			if(!set.contains(parName)){
-				error("Command with path "+command.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .", command, null, -1);
+				error("Command with path "+command.path.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .",
+					command, null, -1, PARAMETER_NOT_DEFINED);
 			}
 		}
 	}

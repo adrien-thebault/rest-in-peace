@@ -16,13 +16,13 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link restInPeace.CommandRest#getMethod <em>Method</em>}</li>
- *   <li>{@link restInPeace.CommandRest#getPath <em>Path</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getParameters <em>Parameters</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getEntryFormats <em>Entry Formats</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getOutputFormats <em>Output Formats</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getResponse <em>Response</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getDescription <em>Description</em>}</li>
  *   <li>{@link restInPeace.CommandRest#getName <em>Name</em>}</li>
+ *   <li>{@link restInPeace.CommandRest#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @see restInPeace.RestInPeacePackage#getCommandRest()
@@ -61,30 +61,30 @@ public interface CommandRest extends EObject {
 	void setMethod(Method value);
 
 	/**
-	 * Returns the value of the '<em><b>Path</b></em>' attribute.
+	 * Returns the value of the '<em><b>Path</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Path</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Path</em>' attribute.
-	 * @see #setPath(String)
+	 * @return the value of the '<em>Path</em>' containment reference.
+	 * @see #setPath(Path)
 	 * @see restInPeace.RestInPeacePackage#getCommandRest_Path()
-	 * @model required="true"
+	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	String getPath();
+	Path getPath();
 
 	/**
-	 * Sets the value of the '{@link restInPeace.CommandRest#getPath <em>Path</em>}' attribute.
+	 * Sets the value of the '{@link restInPeace.CommandRest#getPath <em>Path</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Path</em>' attribute.
+	 * @param value the new value of the '<em>Path</em>' containment reference.
 	 * @see #getPath()
 	 * @generated
 	 */
-	void setPath(String value);
+	void setPath(Path value);
 
 	/**
 	 * Returns the value of the '<em><b>Parameters</b></em>' containment reference list.

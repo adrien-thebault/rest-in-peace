@@ -14,24 +14,27 @@ APIRest returns APIRest:
 CommandRest returns CommandRest:
 	name=EString ':'
 		'method' ':' method=Method
-		'path' ':' path=EString
+		'path' ':' path=Path
 		('entryFormats' ':' 
 			'-' entryFormats+=EString 
-			( "-" entryFormats+=EString)*
+			('-' entryFormats+=EString)*
 		)?
 		('outputFormats' ':' 
 			'-' outputFormats+=EString 
-			( "-" outputFormats+=EString)*
+			('-' outputFormats+=EString)*
 		)?
 		('description' ':' description=EString)?
 		('parameters' ':' 
-			'-' parameters+=Parameter 
-			("-" parameters+=Parameter)*
+			'-' parameters+=Parameter
+			('-' parameters+=Parameter)*
 		)?
 		('response' ':' 
 			'-' response+=Response 
-			( "-" response+=Response)*
+			('-' response+=Response)*
 		)?;
+
+Path returns Path:
+	path=EString;
 
 EString returns ecore::EString:
 	STRING | ID;
@@ -46,6 +49,7 @@ Parameter returns Parameter:
 	'name' ':' name=EString
 	'type' ':' type=EString
 	('description' ':' comment=EString)?;
+
 
 Response returns Response:
 	code=EInt ':'

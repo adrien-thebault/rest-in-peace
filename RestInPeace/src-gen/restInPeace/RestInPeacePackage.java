@@ -77,22 +77,13 @@ public interface RestInPeacePackage extends EPackage {
 	int COMMAND_REST__METHOD = 0;
 
 	/**
-	 * The feature id for the '<em><b>Path</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int COMMAND_REST__PATH = 1;
-
-	/**
 	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__PARAMETERS = 2;
+	int COMMAND_REST__PARAMETERS = 1;
 
 	/**
 	 * The feature id for the '<em><b>Entry Formats</b></em>' attribute list.
@@ -101,7 +92,7 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__ENTRY_FORMATS = 3;
+	int COMMAND_REST__ENTRY_FORMATS = 2;
 
 	/**
 	 * The feature id for the '<em><b>Output Formats</b></em>' attribute list.
@@ -110,7 +101,7 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__OUTPUT_FORMATS = 4;
+	int COMMAND_REST__OUTPUT_FORMATS = 3;
 
 	/**
 	 * The feature id for the '<em><b>Response</b></em>' containment reference list.
@@ -119,7 +110,7 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__RESPONSE = 5;
+	int COMMAND_REST__RESPONSE = 4;
 
 	/**
 	 * The feature id for the '<em><b>Description</b></em>' attribute.
@@ -128,7 +119,7 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__DESCRIPTION = 6;
+	int COMMAND_REST__DESCRIPTION = 5;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -137,7 +128,16 @@ public interface RestInPeacePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int COMMAND_REST__NAME = 7;
+	int COMMAND_REST__NAME = 6;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMMAND_REST__PATH = 7;
 
 	/**
 	 * The number of structural features of the '<em>Command Rest</em>' class.
@@ -314,6 +314,43 @@ public interface RestInPeacePackage extends EPackage {
 	int RESPONSE_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link restInPeace.impl.PathImpl <em>Path</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see restInPeace.impl.PathImpl
+	 * @see restInPeace.impl.RestInPeacePackageImpl#getPath()
+	 * @generated
+	 */
+	int PATH = 4;
+
+	/**
+	 * The feature id for the '<em><b>Path</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATH__PATH = 0;
+
+	/**
+	 * The number of structural features of the '<em>Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATH_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>Path</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PATH_OPERATION_COUNT = 0;
+
+	/**
 	 * The meta object id for the '{@link restInPeace.Method <em>Method</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -321,7 +358,7 @@ public interface RestInPeacePackage extends EPackage {
 	 * @see restInPeace.impl.RestInPeacePackageImpl#getMethod()
 	 * @generated
 	 */
-	int METHOD = 4;
+	int METHOD = 5;
 
 	/**
 	 * Returns the meta object for class '{@link restInPeace.CommandRest <em>Command Rest</em>}'.
@@ -345,15 +382,15 @@ public interface RestInPeacePackage extends EPackage {
 	EAttribute getCommandRest_Method();
 
 	/**
-	 * Returns the meta object for the attribute '{@link restInPeace.CommandRest#getPath <em>Path</em>}'.
+	 * Returns the meta object for the containment reference '{@link restInPeace.CommandRest#getPath <em>Path</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @return the meta object for the containment reference '<em>Path</em>'.
 	 * @see restInPeace.CommandRest#getPath()
 	 * @see #getCommandRest()
 	 * @generated
 	 */
-	EAttribute getCommandRest_Path();
+	EReference getCommandRest_Path();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link restInPeace.CommandRest#getParameters <em>Parameters</em>}'.
@@ -540,6 +577,27 @@ public interface RestInPeacePackage extends EPackage {
 	EAttribute getResponse_Description();
 
 	/**
+	 * Returns the meta object for class '{@link restInPeace.Path <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Path</em>'.
+	 * @see restInPeace.Path
+	 * @generated
+	 */
+	EClass getPath();
+
+	/**
+	 * Returns the meta object for the attribute '{@link restInPeace.Path#getPath <em>Path</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Path</em>'.
+	 * @see restInPeace.Path#getPath()
+	 * @see #getPath()
+	 * @generated
+	 */
+	EAttribute getPath_Path();
+
+	/**
 	 * Returns the meta object for enum '{@link restInPeace.Method <em>Method</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -591,12 +649,12 @@ public interface RestInPeacePackage extends EPackage {
 		EAttribute COMMAND_REST__METHOD = eINSTANCE.getCommandRest_Method();
 
 		/**
-		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Path</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute COMMAND_REST__PATH = eINSTANCE.getCommandRest_Path();
+		EReference COMMAND_REST__PATH = eINSTANCE.getCommandRest_Path();
 
 		/**
 		 * The meta object literal for the '<em><b>Parameters</b></em>' containment reference list feature.
@@ -739,6 +797,24 @@ public interface RestInPeacePackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute RESPONSE__DESCRIPTION = eINSTANCE.getResponse_Description();
+
+		/**
+		 * The meta object literal for the '{@link restInPeace.impl.PathImpl <em>Path</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see restInPeace.impl.PathImpl
+		 * @see restInPeace.impl.RestInPeacePackageImpl#getPath()
+		 * @generated
+		 */
+		EClass PATH = eINSTANCE.getPath();
+
+		/**
+		 * The meta object literal for the '<em><b>Path</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PATH__PATH = eINSTANCE.getPath_Path();
 
 		/**
 		 * The meta object literal for the '{@link restInPeace.Method <em>Method</em>}' enum.

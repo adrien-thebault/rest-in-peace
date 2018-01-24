@@ -165,6 +165,29 @@ public class RestInPeaceItemProviderAdapterFactory extends RestInPeaceAdapterFac
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link restInPeace.Path} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PathItemProvider pathItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link restInPeace.Path}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPathAdapter() {
+		if (pathItemProvider == null) {
+			pathItemProvider = new PathItemProvider(this);
+		}
+
+		return pathItemProvider;
+	}
+
+	/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -271,6 +294,8 @@ public class RestInPeaceItemProviderAdapterFactory extends RestInPeaceAdapterFac
 			parameterItemProvider.dispose();
 		if (responseItemProvider != null)
 			responseItemProvider.dispose();
+		if (pathItemProvider != null)
+			pathItemProvider.dispose();
 	}
 
 }

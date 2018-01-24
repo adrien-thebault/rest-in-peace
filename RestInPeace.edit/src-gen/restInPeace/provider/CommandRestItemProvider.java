@@ -57,7 +57,6 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 			super.getPropertyDescriptors(object);
 
 			addMethodPropertyDescriptor(object);
-			addPathPropertyDescriptor(object);
 			addEntryFormatsPropertyDescriptor(object);
 			addOutputFormatsPropertyDescriptor(object);
 			addDescriptionPropertyDescriptor(object);
@@ -79,22 +78,6 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 						getString("_UI_PropertyDescriptor_description", "_UI_CommandRest_method_feature",
 								"_UI_CommandRest_type"),
 						RestInPeacePackage.Literals.COMMAND_REST__METHOD, true, false, false,
-						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Path feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPathPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
-						getResourceLocator(), getString("_UI_CommandRest_path_feature"),
-						getString("_UI_PropertyDescriptor_description", "_UI_CommandRest_path_feature",
-								"_UI_CommandRest_type"),
-						RestInPeacePackage.Literals.COMMAND_REST__PATH, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -176,6 +159,7 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 			super.getChildrenFeatures(object);
 			childrenFeatures.add(RestInPeacePackage.Literals.COMMAND_REST__PARAMETERS);
 			childrenFeatures.add(RestInPeacePackage.Literals.COMMAND_REST__RESPONSE);
+			childrenFeatures.add(RestInPeacePackage.Literals.COMMAND_REST__PATH);
 		}
 		return childrenFeatures;
 	}
@@ -240,7 +224,6 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 
 		switch (notification.getFeatureID(CommandRest.class)) {
 		case RestInPeacePackage.COMMAND_REST__METHOD:
-		case RestInPeacePackage.COMMAND_REST__PATH:
 		case RestInPeacePackage.COMMAND_REST__ENTRY_FORMATS:
 		case RestInPeacePackage.COMMAND_REST__OUTPUT_FORMATS:
 		case RestInPeacePackage.COMMAND_REST__DESCRIPTION:
@@ -249,6 +232,7 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 			return;
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:
 		case RestInPeacePackage.COMMAND_REST__RESPONSE:
+		case RestInPeacePackage.COMMAND_REST__PATH:
 			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
@@ -271,6 +255,9 @@ public class CommandRestItemProvider extends ItemProviderAdapter implements IEdi
 
 		newChildDescriptors.add(createChildParameter(RestInPeacePackage.Literals.COMMAND_REST__RESPONSE,
 				RestInPeaceFactory.eINSTANCE.createResponse()));
+
+		newChildDescriptors.add(createChildParameter(RestInPeacePackage.Literals.COMMAND_REST__PATH,
+				RestInPeaceFactory.eINSTANCE.createPath()));
 	}
 
 	/**
