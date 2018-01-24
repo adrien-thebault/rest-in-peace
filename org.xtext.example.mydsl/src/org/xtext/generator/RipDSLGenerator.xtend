@@ -10,6 +10,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import restInPeace.APIRest
 import restInPeace.CommandRest
 import restInPeace.Method
+import restInPeace.Parameter
 
 /**
  * Generates code from your model files on save.
@@ -33,17 +34,54 @@ class RipDSLGenerator extends AbstractGenerator {
 		«command.compile»
 	«ENDFOR»
 	
-	var server = app.listen(«api.port», '«api.host»', function () {
-	})'''
+	var server = app.listen(«api.port», '«api.host»', function () {	})'''
 	
 	def dispatch compile(CommandRest cmd) '''
-	/* «cmd.name» */
-	app.«cmd.method.toLowerCase()»('«cmd.path»', function(req, res) {
+	/* 
+	*
+	*	«cmd.name» 
+	*	«cmd.description» 
+	*
+	«FOR i : cmd.entryFormats»
+	*	@input «i»
+	«ENDFOR»
+	«FOR o : cmd.outputFormats»
+	*	@output «o»
+	«ENDFOR»
+	*	
+	«FOR param : cmd.parameters»
+		«param.compile»
+	«ENDFOR»
+	*
+	*/
+	
+	app.«cmd.method.toLowerCase()»('«cmd.path.toExpressPath()»', function(req, res) {
+		
+		«FOR i : cmd.entryFormats»
+		if(req.is("«i»")) {
+			// TODO
+		}
+		«ENDFOR»
+		
 		res.end("Ceci est la réponse de la commande «cmd.name»");
-	})'''
+		
+	})
+	
+	
+	'''
+	
+	def dispatch compile(Parameter p) '''
+	*	@param «p.name» : «p.type»
+	*		   «p.comment»
+	*
+	'''
 	
 	def String toLowerCase(Method method) {
 		return method.toString().toLowerCase();
+	}
+	
+	def String toExpressPath(String path) {
+		return path.replaceAll("\\{(\\w+)\\}", ":$1");
 	}
 	
 }
