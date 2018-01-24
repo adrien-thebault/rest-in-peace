@@ -14,8 +14,5 @@ import org.eclipse.xtext.RuleCall
  */
 class RipDSLScopeProvider extends AbstractRipDSLScopeProvider {
 	
-	override complete(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-        acceptor.accept(createCompletionProposal("Hello World!",context))
-        super.complete_Greeting(model, ruleCall, context, acceptor)
-    }
+	
 }
