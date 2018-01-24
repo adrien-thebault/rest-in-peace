@@ -21,10 +21,12 @@ import javax.inject.Inject
 class RipDSLGenerator extends AbstractGenerator {
 	
 	@Inject NodeJSGenerator nodejs
+	@Inject PythonGenerator python
 	@Inject CurlTestGenerator curl
 	
 	override doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
     	nodejs.doGenerate(input, fsa, context);
+    	python.doGenerate(input, fsa, context);
 	    curl.doGenerate(input, fsa, context);
 	}
 	
