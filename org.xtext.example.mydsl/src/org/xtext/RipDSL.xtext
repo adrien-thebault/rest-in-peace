@@ -14,7 +14,7 @@ APIRest returns APIRest:
 CommandRest returns CommandRest:
 	name=EString ':'
 		'method' ':' method=Method
-		'path' ':' path=EString
+		'path' ':' path=Path
 		('entryFormats' ':' 
 			'-' entryFormats+=EString 
 			( "-" entryFormats+=EString)*
@@ -32,6 +32,9 @@ CommandRest returns CommandRest:
 			'-' response+=Response 
 			( "-" response+=Response)*
 		)?;
+
+Path returns Path:
+	path=EString;
 
 EString returns ecore::EString:
 	STRING | ID;

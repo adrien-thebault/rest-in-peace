@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import restInPeace.CommandRest;
 import restInPeace.Method;
 import restInPeace.Parameter;
+import restInPeace.Path;
 import restInPeace.Response;
 import restInPeace.RestInPeacePackage;
 
@@ -34,13 +35,13 @@ import restInPeace.RestInPeacePackage;
  * </p>
  * <ul>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getMethod <em>Method</em>}</li>
- *   <li>{@link restInPeace.impl.CommandRestImpl#getPath <em>Path</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getParameters <em>Parameters</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getEntryFormats <em>Entry Formats</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getOutputFormats <em>Output Formats</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getResponse <em>Response</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getDescription <em>Description</em>}</li>
  *   <li>{@link restInPeace.impl.CommandRestImpl#getName <em>Name</em>}</li>
+ *   <li>{@link restInPeace.impl.CommandRestImpl#getPath <em>Path</em>}</li>
  * </ul>
  *
  * @generated
@@ -65,26 +66,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	 * @ordered
 	 */
 	protected Method method = METHOD_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPath()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String PATH_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getPath() <em>Path</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPath()
-	 * @generated
-	 * @ordered
-	 */
-	protected String path = PATH_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getParameters() <em>Parameters</em>}' containment reference list.
@@ -167,6 +148,16 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	protected String name = NAME_EDEFAULT;
 
 	/**
+	 * The cached value of the '{@link #getPath() <em>Path</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPath()
+	 * @generated
+	 * @ordered
+	 */
+	protected Path path;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -212,7 +203,7 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getPath() {
+	public Path getPath() {
 		return path;
 	}
 
@@ -221,12 +212,40 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setPath(String newPath) {
-		String oldPath = path;
+	public NotificationChain basicSetPath(Path newPath, NotificationChain msgs) {
+		Path oldPath = path;
 		path = newPath;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, RestInPeacePackage.COMMAND_REST__PATH, oldPath,
-					path));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					RestInPeacePackage.COMMAND_REST__PATH, oldPath, newPath);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPath(Path newPath) {
+		if (newPath != path) {
+			NotificationChain msgs = null;
+			if (path != null)
+				msgs = ((InternalEObject) path).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - RestInPeacePackage.COMMAND_REST__PATH, null, msgs);
+			if (newPath != null)
+				msgs = ((InternalEObject) newPath).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - RestInPeacePackage.COMMAND_REST__PATH, null, msgs);
+			msgs = basicSetPath(newPath, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, RestInPeacePackage.COMMAND_REST__PATH, newPath,
+					newPath));
 	}
 
 	/**
@@ -337,6 +356,8 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			return ((InternalEList<?>) getParameters()).basicRemove(otherEnd, msgs);
 		case RestInPeacePackage.COMMAND_REST__RESPONSE:
 			return ((InternalEList<?>) getResponse()).basicRemove(otherEnd, msgs);
+		case RestInPeacePackage.COMMAND_REST__PATH:
+			return basicSetPath(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -351,8 +372,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		switch (featureID) {
 		case RestInPeacePackage.COMMAND_REST__METHOD:
 			return getMethod();
-		case RestInPeacePackage.COMMAND_REST__PATH:
-			return getPath();
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:
 			return getParameters();
 		case RestInPeacePackage.COMMAND_REST__ENTRY_FORMATS:
@@ -365,6 +384,8 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			return getDescription();
 		case RestInPeacePackage.COMMAND_REST__NAME:
 			return getName();
+		case RestInPeacePackage.COMMAND_REST__PATH:
+			return getPath();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -380,9 +401,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		switch (featureID) {
 		case RestInPeacePackage.COMMAND_REST__METHOD:
 			setMethod((Method) newValue);
-			return;
-		case RestInPeacePackage.COMMAND_REST__PATH:
-			setPath((String) newValue);
 			return;
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:
 			getParameters().clear();
@@ -406,6 +424,9 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		case RestInPeacePackage.COMMAND_REST__NAME:
 			setName((String) newValue);
 			return;
+		case RestInPeacePackage.COMMAND_REST__PATH:
+			setPath((Path) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -420,9 +441,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		switch (featureID) {
 		case RestInPeacePackage.COMMAND_REST__METHOD:
 			setMethod(METHOD_EDEFAULT);
-			return;
-		case RestInPeacePackage.COMMAND_REST__PATH:
-			setPath(PATH_EDEFAULT);
 			return;
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:
 			getParameters().clear();
@@ -442,6 +460,9 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		case RestInPeacePackage.COMMAND_REST__NAME:
 			setName(NAME_EDEFAULT);
 			return;
+		case RestInPeacePackage.COMMAND_REST__PATH:
+			setPath((Path) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -456,8 +477,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		switch (featureID) {
 		case RestInPeacePackage.COMMAND_REST__METHOD:
 			return method != METHOD_EDEFAULT;
-		case RestInPeacePackage.COMMAND_REST__PATH:
-			return PATH_EDEFAULT == null ? path != null : !PATH_EDEFAULT.equals(path);
 		case RestInPeacePackage.COMMAND_REST__PARAMETERS:
 			return parameters != null && !parameters.isEmpty();
 		case RestInPeacePackage.COMMAND_REST__ENTRY_FORMATS:
@@ -470,6 +489,8 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 			return DESCRIPTION_EDEFAULT == null ? description != null : !DESCRIPTION_EDEFAULT.equals(description);
 		case RestInPeacePackage.COMMAND_REST__NAME:
 			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+		case RestInPeacePackage.COMMAND_REST__PATH:
+			return path != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -487,8 +508,6 @@ public class CommandRestImpl extends MinimalEObjectImpl.Container implements Com
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (method: ");
 		result.append(method);
-		result.append(", path: ");
-		result.append(path);
 		result.append(", entryFormats: ");
 		result.append(entryFormats);
 		result.append(", outputFormats: ");

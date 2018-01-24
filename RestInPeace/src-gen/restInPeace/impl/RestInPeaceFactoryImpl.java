@@ -65,6 +65,8 @@ public class RestInPeaceFactoryImpl extends EFactoryImpl implements RestInPeaceF
 			return createParameter();
 		case RestInPeacePackage.RESPONSE:
 			return createResponse();
+		case RestInPeacePackage.PATH:
+			return createPath();
 		default:
 			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -138,6 +140,16 @@ public class RestInPeaceFactoryImpl extends EFactoryImpl implements RestInPeaceF
 	public Response createResponse() {
 		ResponseImpl response = new ResponseImpl();
 		return response;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Path createPath() {
+		PathImpl path = new PathImpl();
+		return path;
 	}
 
 	/**

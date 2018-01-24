@@ -3,10 +3,26 @@
  */
 package org.xtext.ui.contentassist
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.RuleCall
+import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
+import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
+import restInPeace.APIRest
+import restInPeace.CommandRest
 
 /**
  * See https://www.eclipse.org/Xtext/documentation/304_ide_concepts.html#content-assist
  * on how to customize the content assistant.
  */
 class RipDSLProposalProvider extends AbstractRipDSLProposalProvider {
+	
+	override complete_Path(EObject model, RuleCall ruleCall, 
+	  ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	  for(CommandRest c : (model.eContainer as APIRest).commands){
+	  	if(c.path != null && c.path.path != null){
+	  		val String proposal = "\"" + c.path.path + "\""
+		  	acceptor.accept(createCompletionProposal(proposal, context))
+	  	}
+	  }
+	}
 }

@@ -18,13 +18,13 @@
     </genEnums>
     <genClasses ecoreClass="restInPeace.ecore#//CommandRest">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/method"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/path"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restInPeace.ecore#//CommandRest/parameters"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/entryFormats"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/outputFormats"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restInPeace.ecore#//CommandRest/response"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/description"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//CommandRest/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restInPeace.ecore#//CommandRest/path"/>
     </genClasses>
     <genClasses ecoreClass="restInPeace.ecore#//APIRest">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference restInPeace.ecore#//APIRest/commands"/>
@@ -39,6 +39,9 @@
     <genClasses ecoreClass="restInPeace.ecore#//Response">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//Response/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//Response/description"/>
+    </genClasses>
+    <genClasses ecoreClass="restInPeace.ecore#//Path">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute restInPeace.ecore#//Path/path"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

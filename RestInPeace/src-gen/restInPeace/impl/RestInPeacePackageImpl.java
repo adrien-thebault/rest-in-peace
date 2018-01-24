@@ -13,6 +13,7 @@ import restInPeace.APIRest;
 import restInPeace.CommandRest;
 import restInPeace.Method;
 import restInPeace.Parameter;
+import restInPeace.Path;
 import restInPeace.Response;
 import restInPeace.RestInPeaceFactory;
 import restInPeace.RestInPeacePackage;
@@ -51,6 +52,13 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	private EClass responseEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pathEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,8 +153,8 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getCommandRest_Path() {
-		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(1);
+	public EReference getCommandRest_Path() {
+		return (EReference) commandRestEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -155,7 +163,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EReference getCommandRest_Parameters() {
-		return (EReference) commandRestEClass.getEStructuralFeatures().get(2);
+		return (EReference) commandRestEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -164,7 +172,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EAttribute getCommandRest_EntryFormats() {
-		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(3);
+		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -173,7 +181,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EAttribute getCommandRest_OutputFormats() {
-		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -182,7 +190,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EReference getCommandRest_Response() {
-		return (EReference) commandRestEClass.getEStructuralFeatures().get(5);
+		return (EReference) commandRestEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -191,7 +199,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EAttribute getCommandRest_Description() {
-		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(6);
+		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -200,7 +208,7 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * @generated
 	 */
 	public EAttribute getCommandRest_Name() {
-		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(7);
+		return (EAttribute) commandRestEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -307,6 +315,24 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPath() {
+		return pathEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getPath_Path() {
+		return (EAttribute) pathEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EEnum getMethod() {
 		return methodEEnum;
 	}
@@ -342,13 +368,13 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 		// Create classes and their features
 		commandRestEClass = createEClass(COMMAND_REST);
 		createEAttribute(commandRestEClass, COMMAND_REST__METHOD);
-		createEAttribute(commandRestEClass, COMMAND_REST__PATH);
 		createEReference(commandRestEClass, COMMAND_REST__PARAMETERS);
 		createEAttribute(commandRestEClass, COMMAND_REST__ENTRY_FORMATS);
 		createEAttribute(commandRestEClass, COMMAND_REST__OUTPUT_FORMATS);
 		createEReference(commandRestEClass, COMMAND_REST__RESPONSE);
 		createEAttribute(commandRestEClass, COMMAND_REST__DESCRIPTION);
 		createEAttribute(commandRestEClass, COMMAND_REST__NAME);
+		createEReference(commandRestEClass, COMMAND_REST__PATH);
 
 		apiRestEClass = createEClass(API_REST);
 		createEReference(apiRestEClass, API_REST__COMMANDS);
@@ -363,6 +389,9 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 		responseEClass = createEClass(RESPONSE);
 		createEAttribute(responseEClass, RESPONSE__CODE);
 		createEAttribute(responseEClass, RESPONSE__DESCRIPTION);
+
+		pathEClass = createEClass(PATH);
+		createEAttribute(pathEClass, PATH__PATH);
 
 		// Create enums
 		methodEEnum = createEEnum(METHOD);
@@ -403,8 +432,6 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCommandRest_Method(), this.getMethod(), "method", "GET", 1, 1, CommandRest.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCommandRest_Path(), ecorePackage.getEString(), "path", null, 1, 1, CommandRest.class,
-				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCommandRest_Parameters(), this.getParameter(), null, "parameters", null, 0, -1,
 				CommandRest.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -422,6 +449,9 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCommandRest_Name(), ecorePackage.getEString(), "name", null, 1, 1, CommandRest.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCommandRest_Path(), this.getPath(), null, "path", null, 1, 1, CommandRest.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE,
+				IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(apiRestEClass, APIRest.class, "APIRest", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAPIRest_Commands(), this.getCommandRest(), null, "commands", null, 0, -1, APIRest.class,
@@ -447,6 +477,10 @@ public class RestInPeacePackageImpl extends EPackageImpl implements RestInPeaceP
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getResponse_Description(), ecorePackage.getEString(), "description", null, 0, 1, Response.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pathEClass, Path.class, "Path", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPath_Path(), ecorePackage.getEString(), "path", null, 1, 1, Path.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(methodEEnum, Method.class, "Method");

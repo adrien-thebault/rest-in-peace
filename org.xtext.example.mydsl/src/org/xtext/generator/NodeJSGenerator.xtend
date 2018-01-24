@@ -55,7 +55,7 @@ class NodeJSGenerator extends AbstractGenerator {
 	*
 	*/
 	
-	app.«cmd.method.toLowerCase()»('«cmd.path.toExpressPath()»', function(req, res) {
+	app.«cmd.method.toLowerCase()»('«cmd.path.path.toExpressPath()»', function(req, res) {
 		
 		«FOR i : cmd.entryFormats»
 		if(req.is("«i»")) {
