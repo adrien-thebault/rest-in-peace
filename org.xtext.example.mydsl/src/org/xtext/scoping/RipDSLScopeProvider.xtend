@@ -3,6 +3,8 @@
  */
 package org.xtext.scoping
 
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.RuleCall
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +13,9 @@ package org.xtext.scoping
  * on how and when to use it.
  */
 class RipDSLScopeProvider extends AbstractRipDSLScopeProvider {
-
+	
+	override complete(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+        acceptor.accept(createCompletionProposal("Hello World!",context))
+        super.complete_Greeting(model, ruleCall, context, acceptor)
+    }
 }
