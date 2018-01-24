@@ -4,6 +4,18 @@
 package org.xtext.ui.quickfix
 
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
+import org.xtext.validation.RipDSLValidator
+import org.eclipse.xtext.ui.editor.quickfix.Fix
+import org.eclipse.xtext.validation.Issue
+import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
+import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification
+import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
+import org.eclipse.emf.ecore.EObject
+import restInPeace.CommandRest
+import restInPeace.Parameter
+import java.util.regex.Pattern
+import java.util.HashSet
+import restInPeace.impl.RestInPeaceFactoryImpl
 
 /**
  * Custom quickfixes.
@@ -12,13 +24,37 @@ import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
  */
 class RipDSLQuickfixProvider extends DefaultQuickfixProvider {
 
-//	@Fix(RipDSLValidator.INVALID_NAME)
-//	def capitalizeName(Issue issue, IssueResolutionAcceptor acceptor) {
-//		acceptor.accept(issue, 'Capitalize name', 'Capitalize the name.', 'upcase.png') [
-//			context |
-//			val xtextDocument = context.xtextDocument
-//			val firstLetter = xtextDocument.get(issue.offset, 1)
-//			xtextDocument.replace(issue.offset, 1, firstLetter.toUpperCase)
-//		]
-//	}
+	@Fix(RipDSLValidator.PARAMETER_NOT_DEFINED)
+	def defineParamater(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Define parameter', 'Define the parameter', 'upcase.png', new ParameterDefiner())
+	}
+}
+
+class ParameterDefiner implements ISemanticModification{
+	
+	override apply(EObject element, IModificationContext context){
+		if (element instanceof CommandRest) {
+			val command = element as CommandRest
+			var path = command.path.path
+			val matcher = Pattern.compile("/\\{(\\w+)\\}/?").matcher(path);
+			while(matcher.find()){
+				val parName = matcher.group(1)
+				val set = new HashSet<String>()
+				for(Parameter p : command.parameters){
+					set.add(p.name)
+				}
+				
+				// TODO Ajouter les sauts de lignes
+				
+				if(!set.contains(parName)){
+					val param = RestInPeaceFactoryImpl.eINSTANCE.createParameter
+					param.name = parName;
+					param.type = "int";
+					param.comment = "Automatically generated parameter"
+					command.parameters.add(param)
+				}
+				
+			}
+		}	
+	}
 }

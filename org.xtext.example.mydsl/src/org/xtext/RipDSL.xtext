@@ -17,20 +17,20 @@ CommandRest returns CommandRest:
 		'path' ':' path=Path
 		('entryFormats' ':' 
 			'-' entryFormats+=EString 
-			( "-" entryFormats+=EString)*
+			('-' entryFormats+=EString)*
 		)?
 		('outputFormats' ':' 
 			'-' outputFormats+=EString 
-			( "-" outputFormats+=EString)*
+			('-' outputFormats+=EString)*
 		)?
 		('description' ':' description=EString)?
 		('parameters' ':' 
-			'-' parameters+=Parameter 
-			("-" parameters+=Parameter)*
+			'-' parameters+=Parameter
+			('-' parameters+=Parameter)*
 		)?
 		('response' ':' 
 			'-' response+=Response 
-			( "-" response+=Response)*
+			('-' response+=Response)*
 		)?;
 
 Path returns Path:
@@ -49,6 +49,7 @@ Parameter returns Parameter:
 	'name' ':' name=EString
 	'type' ':' type=EString
 	('description' ':' comment=EString)?;
+
 
 Response returns Response:
 	code=EInt ':'
