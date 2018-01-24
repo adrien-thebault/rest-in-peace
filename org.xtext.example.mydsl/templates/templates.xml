@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><templates><template autoinsert="true" context="org.xtext.RipDSL.CommandRest" deleted="false" description="Create a new REST command" enabled="true" name="command">${commandName}:&#13;
+	method:${methodName}&#13;
+	path:${path}</template></templates>

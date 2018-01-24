@@ -45,8 +45,8 @@ class CurlTestGenerator extends AbstractGenerator {
 	
 	def String genCurl(String string, String string2, CommandRest rest) {
 		
-		String s = "curl -X" + rest.method + " \"$HOST:$PORT" + path + "\"";
-		// TODO : G PA FINI CURL
+		var s = "curl -X" + rest.method + " \"$HOST:$PORT" + rest.path + "\"";
+		// TODO : G PA FINI CURL - TU PU
 		return s;
 		
 	}
