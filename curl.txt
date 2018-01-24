@@ -1,0 +1,21 @@
+-X method : indique le verb à utiliser (PUT, DELETE, GET, POST, PATCH)
+
+-H : header
+-H "Accept:application/json" -> produce json
+-H "Content-Type:application/json" -> consume json
+
+-d '...' : data à envoyer dans le body (POST)
+
+PATH?arg1=val1&arg2=val2 : URL : PATH avec arguments (arg1 et arg2)
+Ex name et color : http://example.com/path/to/page?name=ferret&color=purple
+
+GET
+curl -H "Accept:application/json" http://localhost:8888/demo-rest-jersey-spring/podcasts?orderByInsertionDate=DESC
+
+POST
+curl -i -H "Content-Type: application/json" -X POST
+ -d '{"NOM":"Dalton", "PRENOM":"joe", "NAISSANCE":"2000-08-15", "VILLE":"Orleans"}' http://localhost/silex/api/contact
+
+PUT
+curl -i -H "Content-Type: application/json" -X PUT -d '{"done":true}' http://localhost/silex/api/contact/5
+
