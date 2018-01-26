@@ -13,6 +13,10 @@ import restInPeace.Method
 import restInPeace.Parameter
 import java.util.HashSet
 import org.eclipse.emf.common.util.EList
+import java.util.List
+import java.util.regex.Matcher
+import java.util.ArrayList
+import java.util.regex.Pattern
 
 /**
  * Generates code from your model files on save.
@@ -41,43 +45,72 @@ class PythonGenerator extends AbstractGenerator {
 	if __name__ == '__main__':
 	    app.run()'''
 	
-	def dispatch compile(CommandRest cmd) '''
-	#
-	#	«cmd.name» 
-	#	«cmd.description» 
-	#
-	«FOR i : cmd.entryFormats»
-	#	@input «i»
-	«ENDFOR»
-	«FOR o : cmd.outputFormats»
-	#	@output «o»
-	«ENDFOR»
-	#	
-	«FOR param : cmd.parameters»
-		«param.compile»
-	«ENDFOR»
-	#
-	
-	@app.route('«cmd.path.path.toFlaskPath()»', methods=['«cmd.method»'])
+	def dispatch compile(CommandRest cmd) '''	
+	@app.route('«cmd.toFlaskPath()»', methods=['«cmd.method»'])
 	«cmd.entryFormats.toConsumes()»
 	«cmd.outputFormats.toProduces()»
-	def «cmd.name»
+	def «cmd.name»(«cmd.toMethodParameters()»)
+		«"'''"»
+		«cmd.description» 
+		
+		«FOR i : cmd.entryFormats»
+		:consumes «i»
+		«ENDFOR»
+		«FOR o : cmd.outputFormats»
+		:produces «o»
+		«ENDFOR»
+			
+		«FOR param : cmd.parameters»
+			«param.compile»
+		«ENDFOR»
+		«"'''"»
 		return "Ceci est la réponse de la commande «cmd.name»", 200	
 	
 	'''
 	
-	def dispatch compile(Parameter p) '''
-	#	@param «p.name» : «p.type»
-	#		   «p.comment»
-	#
-	'''
+	def String toMethodParameters(CommandRest rest) {
+		
+		if(rest.parameters.length == 0) return "";
+		var String res = "";
+		
+		for(Parameter p : rest.parameters) {
+			res += p.name + ',';
+		}
+		
+		res = res.substring(0, res.length - 1);
+		return res;
+		
+	}
+	
+	def dispatch compile(Parameter p) ''':param «p.type» «p.name»: «p.comment»'''
 	
 	def String toLowerCase(Method method) {
 		return method.toString().toLowerCase();
 	}
 	
-	def String toFlaskPath(String path) {
-		return path.replaceAll("\\{(\\w+)\\}", "<$1>");
+	def String toFlaskPath(CommandRest cmd) {
+
+		var List<String> allMatches = new ArrayList<String>();
+		var Matcher m = Pattern.compile("\\{(\\w+)\\}").matcher(cmd.path.path);
+		while(m.find()) {
+		  allMatches.add(m.group(1));
+		}
+		
+		for(String match : allMatches) {
+		
+			var String type;
+			for(Parameter p : cmd.parameters) {
+				if(p.name.equals(match)) {
+					type = p.type;
+				}
+			}
+			
+			cmd.path.path = cmd.path.path.replace("{" + match + "}", "<" + type + ":" + match + ">");
+			
+		}
+		
+		return cmd.path.path;
+		
 	}
 	
 	def String toConsumes(EList<String> ef) {
@@ -95,10 +128,6 @@ class PythonGenerator extends AbstractGenerator {
 			return "@produces('" + ef.join('\',\'') + "')";
 		}
 	}
-	
-	// TODO: parenthèses après nom de méthode
-	// TODO: types des params
-	// TODO: doc des méthodes
 	
 	
 }
