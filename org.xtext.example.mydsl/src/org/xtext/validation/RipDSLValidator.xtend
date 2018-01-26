@@ -9,6 +9,7 @@ import org.eclipse.xtext.validation.Check
 import restInPeace.APIRest
 import restInPeace.CommandRest
 import restInPeace.Parameter
+import restInPeace.Path
 
 /**
  * This class contains custom validation rules. 
@@ -18,6 +19,7 @@ import restInPeace.Parameter
 class RipDSLValidator extends AbstractRipDSLValidator {
 	public static final String METHOD_PATH_ALREADY_DEFINED = "method-path-already-defined";
 	public static final String PARAMETER_NOT_DEFINED = "parameter-not-defined";
+	public static final String PATH_MUST_BEGINS_WITH_SLASH = "path_must_begin_with_slash";
 	
 
 	@Check
@@ -49,6 +51,14 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 				error("Command with path "+command.path.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .",
 					command, null, -1, PARAMETER_NOT_DEFINED);
 			}
+		}
+	}
+	
+	@Check
+	def checkPathBeginsWithSlash(Path p) {
+		if(!p.path.startsWith("/")){
+			error("Paths must begin with the character /.",
+				p, null, -1, PATH_MUST_BEGINS_WITH_SLASH);
 		}
 	}
 }

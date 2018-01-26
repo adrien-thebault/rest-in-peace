@@ -16,6 +16,7 @@ import restInPeace.Parameter
 import java.util.regex.Pattern
 import java.util.HashSet
 import restInPeace.impl.RestInPeaceFactoryImpl
+import restInPeace.Path
 
 /**
  * Custom quickfixes.
@@ -28,6 +29,22 @@ class RipDSLQuickfixProvider extends DefaultQuickfixProvider {
 	def defineParamater(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Define parameter', 'Define the parameter', 'upcase.png', new ParameterDefiner())
 	}
+	
+	@Fix(RipDSLValidator.PATH_MUST_BEGINS_WITH_SLASH)
+	def appendSlashToPath(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Append a slash to the path', 'Append a slash to the path', 'upcase.png', new SlashAppender())
+	}
+}
+
+class SlashAppender implements ISemanticModification{
+	
+	override apply(EObject element, IModificationContext context) throws Exception {
+		if(element instanceof Path){
+			val p = element as Path;
+			p.path = "/" + p.path
+		}
+	}
+	
 }
 
 class ParameterDefiner implements ISemanticModification{

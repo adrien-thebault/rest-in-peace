@@ -48,7 +48,7 @@ class CurlTestGenerator extends AbstractGenerator {
 	
 	def String genPath(CommandRest cmd, HashSet<Parameter> ps) {
 		
-		var s = cmd.path;
+		var s = cmd.path.path;
 		
 		var it1 = cmd.parameters.iterator();
 		while(it1.hasNext()) {
@@ -91,7 +91,7 @@ class CurlTestGenerator extends AbstractGenerator {
 
 		var HashSet<Parameter> non_url = new HashSet<Parameter>();
 		for(Parameter p : rest.parameters) {
-			if(!rest.path.contains("{" + p.name + "}")) non_url.add(p);
+			if(!rest.path.path.contains("{" + p.name + "}")) non_url.add(p);
 		}
 		
 		var s = "curl -X" + rest.method + " \"http://$HOST:$PORT" + genPath(rest, non_url) + "\"";

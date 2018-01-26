@@ -58,7 +58,7 @@ class PythonGenerator extends AbstractGenerator {
 	«ENDFOR»
 	#
 	
-	@app.route('«cmd.path.toFlaskPath()»', methods=['«cmd.method»'])
+	@app.route('«cmd.path.path.toFlaskPath()»', methods=['«cmd.method»'])
 	«cmd.entryFormats.toConsumes()»
 	«cmd.outputFormats.toProduces()»
 	def «cmd.name»
