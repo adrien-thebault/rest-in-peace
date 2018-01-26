@@ -10,6 +10,7 @@ import restInPeace.APIRest
 import restInPeace.CommandRest
 import restInPeace.Parameter
 import restInPeace.Path
+import restInPeace.RestInPeacePackage.Literals
 
 /**
  * This class contains custom validation rules. 
@@ -19,7 +20,8 @@ import restInPeace.Path
 class RipDSLValidator extends AbstractRipDSLValidator {
 	public static final String METHOD_PATH_ALREADY_DEFINED = "method-path-already-defined";
 	public static final String PARAMETER_NOT_DEFINED = "parameter-not-defined";
-	public static final String PATH_MUST_BEGINS_WITH_SLASH = "path_must_begin_with_slash";
+	public static final String PATH_MUST_BEGINS_WITH_SLASH = "path-must-begin-with-slash";
+	public static final String PARAMETER_MUST_NOT_BE_EMPTY = "parameter-must-not-be-empty";
 	
 
 	@Check
@@ -29,7 +31,7 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 		for(CommandRest c : commands){
 			val string = c.path.path + c.method;
 			if(commandList.contains(string)){
-				error("Command with path "+c.path.path+" and method "+c.method+" is already defined ಠ_ಠ.", c, null, -1, METHOD_PATH_ALREADY_DEFINED);
+				error("Command with path "+c.path.path+" and method "+c.method+" is already defined ಠ_ಠ.", c, Literals.COMMAND_REST__NAME, -1, METHOD_PATH_ALREADY_DEFINED);
 			} else {
 				commandList.add(string);
 			}
@@ -49,7 +51,7 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 			
 			if(!set.contains(parName)){
 				error("Command with path "+command.path.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .",
-					command, null, -1, PARAMETER_NOT_DEFINED);
+					command, Literals.COMMAND_REST__NAME, -1, PARAMETER_NOT_DEFINED);
 			}
 		}
 	}
@@ -59,6 +61,14 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 		if(!p.path.startsWith("/")){
 			error("Paths must begin with the character /.",
 				p, null, -1, PATH_MUST_BEGINS_WITH_SLASH);
+		}
+	}
+	
+	@Check
+	def checkParameterIsNotEmpty(Parameter p) {
+		if(!p.name.matches(".*\\w.*")){
+			error("Parameters name must not be empty.",
+				p, Literals.PARAMETER__NAME, -1, PARAMETER_MUST_NOT_BE_EMPTY);
 		}
 	}
 }
