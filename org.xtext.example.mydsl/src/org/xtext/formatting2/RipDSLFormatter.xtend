@@ -11,20 +11,22 @@ import restInPeace.APIRest
 import restInPeace.CommandRest
 import restInPeace.Parameter
 import restInPeace.Response
+import restInPeace.RestInPeacePackage.Literals
 
 class RipDSLFormatter extends AbstractFormatter2 {
 	
 	@Inject extension RipDSLGrammarAccess
 
 	def dispatch void format(APIRest aPIRest, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
 		for (CommandRest commandRest : aPIRest.getCommands()) {
 			commandRest.format;
 		}
 	}
 
 	def dispatch void format(CommandRest commandRest, extension IFormattableDocument document) {
-		// TODO: format HiddenRegions around keywords, attributes, cross references, etc. 
+		commandRest.interior[indent];
+		commandRest.regionFor.keyword("response").prepend[newLine];	
+		
 		for (Parameter parameter : commandRest.getParameters()) {
 			parameter.format;
 		}
@@ -33,5 +35,7 @@ class RipDSLFormatter extends AbstractFormatter2 {
 		}
 	}
 	
-	// TODO: implement for 
+	def dispatch void format(Parameter param, extension IFormattableDocument document) {
+		param.regionFor.keyword('-').surround[indent];
+	}
 }

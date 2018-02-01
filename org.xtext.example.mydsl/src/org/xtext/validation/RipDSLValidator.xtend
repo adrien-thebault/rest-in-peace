@@ -22,6 +22,7 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 	public static final String PARAMETER_NOT_DEFINED = "parameter-not-defined";
 	public static final String PATH_MUST_BEGINS_WITH_SLASH = "path-must-begin-with-slash";
 	public static final String PARAMETER_MUST_NOT_BE_EMPTY = "parameter-must-not-be-empty";
+	public static final String PARAMETER_MUST_NOT_CONTAIN_SPACES = "parameter-must-not-contain-spaces";
 	
 
 	@Check
@@ -50,7 +51,7 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 			}
 			
 			if(!set.contains(parName)){
-				error("Command with path "+command.path.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared ಥ_ಥ .",
+				error("Command with path "+command.path.path+" and method "+command.method+" has a parameter "+parName+" in the path which is not declared.",
 					command, Literals.COMMAND_REST__NAME, -1, PARAMETER_NOT_DEFINED);
 			}
 		}
@@ -69,6 +70,14 @@ class RipDSLValidator extends AbstractRipDSLValidator {
 		if(!p.name.matches(".*\\w.*")){
 			error("Parameters name must not be empty.",
 				p, Literals.PARAMETER__NAME, -1, PARAMETER_MUST_NOT_BE_EMPTY);
+		}
+	}
+	
+	@Check
+	def checkParameterDoesNotContainSpaces(Parameter p) {
+		if(p.name.matches(".*\\s.*")){
+			error("Parameters names must not contain spaces.",
+				p, Literals.PARAMETER__NAME, -1, PARAMETER_MUST_NOT_CONTAIN_SPACES);
 		}
 	}
 }

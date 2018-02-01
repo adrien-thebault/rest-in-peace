@@ -34,6 +34,23 @@ class RipDSLQuickfixProvider extends DefaultQuickfixProvider {
 	def appendSlashToPath(Issue issue, IssueResolutionAcceptor acceptor) {
 		acceptor.accept(issue, 'Append a slash to the path', 'Append a slash to the path', 'upcase.png', new SlashAppender())
 	}
+	
+	@Fix(RipDSLValidator.PARAMETER_MUST_NOT_CONTAIN_SPACES)
+	def removeWhiteSpaces(Issue issue, IssueResolutionAcceptor acceptor) {
+		acceptor.accept(issue, 'Remove the spaces', 'Remove the spaces', 'upcase.png', new WhiteSpaceRemover())
+	}
+}
+
+class WhiteSpaceRemover implements ISemanticModification{
+	
+	override apply(EObject element, IModificationContext context) throws Exception {
+		if(element instanceof Parameter){
+			val p = element as Parameter;
+			p.name = p.name.trim();
+			p.name = p.name.replaceAll("\\s+", "_");
+		}
+	}
+	
 }
 
 class SlashAppender implements ISemanticModification{
@@ -60,8 +77,6 @@ class ParameterDefiner implements ISemanticModification{
 				for(Parameter p : command.parameters){
 					set.add(p.name)
 				}
-				
-				// TODO Ajouter les sauts de lignes
 				
 				if(!set.contains(parName)){
 					val param = RestInPeaceFactoryImpl.eINSTANCE.createParameter

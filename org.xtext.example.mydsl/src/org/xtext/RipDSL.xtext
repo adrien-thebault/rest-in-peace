@@ -25,12 +25,12 @@ CommandRest returns CommandRest:
 		)?
 		('description' ':' description=EString)?
 		('parameters' ':' 
-			'-' parameters+=Parameter
-			('-' parameters+=Parameter)*
+			parameters+=Parameter
+			(parameters+=Parameter)*
 		)?
 		('response' ':' 
-			'-' response+=Response 
-			('-' response+=Response)*
+			response+=Response 
+			(response+=Response)*
 		)?;
 
 Path returns Path:
@@ -46,11 +46,11 @@ enum Method returns Method:
 				PUT = 'PUT' | POST = 'POST' | DELETE = 'DELETE' | GET = 'GET' | PATCH = 'PATCH';
 
 Parameter returns Parameter:
-	'name' ':' name=EString
+	'-' 'name' ':' name=EString
 	'type' ':' type=EString
 	('description' ':' comment=EString)?;
 
 
 Response returns Response:
-	code=EInt ':'
+	'-' code=EInt ':'
 		('description' ':' description=EString)?;
