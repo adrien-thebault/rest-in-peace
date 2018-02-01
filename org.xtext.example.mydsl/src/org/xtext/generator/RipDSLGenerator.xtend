@@ -25,9 +25,9 @@ class RipDSLGenerator extends AbstractGenerator {
 	@Inject CurlTestGenerator curl
 	
 	override doGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+		curl.doGenerate(input, fsa, context);
     	nodejs.doGenerate(input, fsa, context);
     	python.doGenerate(input, fsa, context);
-	    curl.doGenerate(input, fsa, context);
 	}
 	
 }

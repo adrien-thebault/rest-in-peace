@@ -25,7 +25,6 @@ class CurlTestGenerator extends AbstractGenerator {
 	
 	HOST="«api.host»"
 	PORT="«api.port»"
-	BASE_URL = "$HOST:$PORT"
 	
 	«FOR command : api.commands»
 		«command.compile»

@@ -11,6 +11,7 @@ import restInPeace.APIRest
 import restInPeace.CommandRest
 import restInPeace.Method
 import restInPeace.Parameter
+import restInPeace.Response
 
 /**
  * Generates code from your model files on save.
@@ -53,6 +54,11 @@ class NodeJSGenerator extends AbstractGenerator {
 		«param.compile»
 	«ENDFOR»
 	*
+	*	@response 200: OK
+	«FOR r : cmd.response»
+		«r.compile»
+	«ENDFOR»
+	*
 	*/
 	
 	app.«cmd.method.toLowerCase()»('«cmd.path.path.toExpressPath()»', function(req, res) {
@@ -74,6 +80,10 @@ class NodeJSGenerator extends AbstractGenerator {
 	*	@param «p.name» : «p.type»
 	*		   «p.comment»
 	*
+	'''
+	
+	def dispatch compile(Response r) '''
+	*	@response «r.code» : «r.description»
 	'''
 	
 	def String toLowerCase(Method method) {

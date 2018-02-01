@@ -17,6 +17,7 @@ import java.util.List
 import java.util.regex.Matcher
 import java.util.ArrayList
 import java.util.regex.Pattern
+import restInPeace.Response
 
 /**
  * Generates code from your model files on save.
@@ -33,6 +34,8 @@ class PythonGenerator extends AbstractGenerator {
 	}
 	
 	def dispatch compile(APIRest api) '''
+	# -*- coding: utf-8 -*-
+	
 	from flask import Flask, request
 	from flask_negotiate import consumes, produces
 	
@@ -63,21 +66,28 @@ class PythonGenerator extends AbstractGenerator {
 		«FOR param : cmd.parameters»
 			«param.compile»
 		«ENDFOR»
+		
+		:response 200: OK
+		«FOR r : cmd.response»
+				«r.compile»
+		«ENDFOR»
 		«"'''"»
 		return "Ceci est la réponse de la commande «cmd.name»", 200	
 	
 	'''
 	
 	def String toMethodParameters(CommandRest rest) {
-		
+				
 		if(rest.parameters.length == 0) return "";
 		var String res = "";
-		
+
 		for(Parameter p : rest.parameters) {
-			res += p.name + ',';
+			if(rest.path.path.contains("{" + p.name + "}")) res += p.name + ',';
 		}
 		
-		res = res.substring(0, res.length - 1);
+		if(res.length > 0)
+			res = res.substring(0, res.length - 1);
+			
 		return res;
 		
 	}
@@ -88,6 +98,10 @@ class PythonGenerator extends AbstractGenerator {
 		return method.toString().toLowerCase();
 	}
 	
+	def dispatch compile(Response r) '''
+	:response «r.code»: «r.description»
+	'''
+	
 	def String toFlaskPath(CommandRest cmd) {
 
 		var List<String> allMatches = new ArrayList<String>();
@@ -96,6 +110,7 @@ class PythonGenerator extends AbstractGenerator {
 		  allMatches.add(m.group(1));
 		}
 		
+		var String newpath = cmd.path.path;
 		for(String match : allMatches) {
 		
 			var String type;
@@ -105,11 +120,11 @@ class PythonGenerator extends AbstractGenerator {
 				}
 			}
 			
-			cmd.path.path = cmd.path.path.replace("{" + match + "}", "<" + type + ":" + match + ">");
+			newpath = newpath.replace("{" + match + "}", "<" + type + ":" + match + ">");
 			
 		}
 		
-		return cmd.path.path;
+		return newpath;
 		
 	}
 	
